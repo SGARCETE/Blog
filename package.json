@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/santi101093/Blog/issues"
   },
-  "homepage": "https://github.com/santi101093/Blog#readme"
+  "homepage": "https://github.com/santi101093/Blog#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }

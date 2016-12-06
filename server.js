@@ -5,10 +5,15 @@ var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 var router = express.Router();
+var mustacheExpress = require('mustache-express');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(router);
+// Register '.mustache' extension with The Mustache Express
+app.engine('mustache', mustacheExpress());
+app.set('view engine', 'mustache');
+app.set('views', __dirname + '/views');
 
 //Las entradas del blog, es un Json.
 var entries = [
@@ -66,4 +71,13 @@ app.delete('/posts/:id', function(req, res) {
     res.json(true);
 });
 
+/*
+ var request = require(‘request’); //npm install -save request
+ request.get(‘http//www.google.com/’,function (error,response,body)){
+    if (!error && response.statusCode ===200){
+        var articulos = JSON.parse(body);
+        console.log(articulo);
+    }
+ }
+ */
 
